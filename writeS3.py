@@ -31,6 +31,9 @@ with io.StringIO() as csv_buffer:
     else:
         print("Unsuccessfully uploaded Player data to S3")
 
+    # Reset StringIO object to effectively overwrite instead of appending
+    csv_buffer.seek(0)
+
     tournaments_df.to_csv(csv_buffer, index=False)
 
     response = s3_client.put_object(

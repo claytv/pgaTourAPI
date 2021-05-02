@@ -4,6 +4,34 @@ from SportsDataPGA import SportsDataPGA
 import boto3
 from credentials import AWS_SECRET, AWS_ACCESS_KEY
 
+
+def writeS3(df, filename, s3_client, bucket):
+    '''Writes a pandas dataframe to a given s3 bucket
+        :Input
+            - df (DataFrame) object to write to s3
+            - filename (string) name of file to be written to S3
+            - s3_client (boto3.client) S3 client object with credentials
+            - bucket (string) name of S3 bucket to write into
+
+        :Returns - None
+    '''
+
+    buffer = io.StringIO()
+    df.to_csv(buffer, index=False)
+
+    response = s3_client.put_object(
+        Bucket=bucket, Key=filename, Body=buffer.getvalue()
+    )
+
+    status = response.get("ResponseMetadata", {}).get("HTTPStatusCode")
+
+    if status == 200:
+        print(f"Successfully uploaded {filename} to S3")
+    else:
+        print(f"Unsuccessfully uploaded {filename} data to S3")
+
+
+
 PGA = SportsDataPGA()
 
 players_df = PGA.getPlayers()
@@ -17,32 +45,5 @@ s3_client = boto3.client(
 
 bucket = 'claytvh-personal-github'
 
-with io.StringIO() as csv_buffer:
-    players_df.to_csv(csv_buffer, index=False)
-
-    response = s3_client.put_object(
-        Bucket=bucket, Key="players.csv", Body=csv_buffer.getvalue()
-    )
-
-    status = response.get("ResponseMetadata", {}).get("HTTPStatusCode")
-
-    if status == 200:
-        print("Successfully uploaded Player data to S3")
-    else:
-        print("Unsuccessfully uploaded Player data to S3")
-
-    # Reset StringIO object to effectively overwrite instead of appending
-    csv_buffer.seek(0)
-
-    tournaments_df.to_csv(csv_buffer, index=False)
-
-    response = s3_client.put_object(
-        Bucket=bucket, Key="tournaments.csv", Body=csv_buffer.getvalue()
-    )
-
-    status = response.get("ResponseMetadata", {}).get("HTTPStatusCode")
-
-    if status == 200:
-        print("Successfully uploaded Tournament data to S3")
-    else:
-        print("Unsuccessfully uploaded Tournament data to S3")
+writeS3(players_df, 'players.csv', s3_client, bucket)
+writeS3(tournaments_df, 'tournaments.csv', s3_client, bucket)

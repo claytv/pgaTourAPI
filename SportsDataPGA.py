@@ -3,7 +3,7 @@ import pandas as pd
 
 
 class SportsDataPGA:
-    '''Wrapper for sportsdata.io PGA tour API: https://sportsdata.io/developers/api-documentation/golf#'''
+    """Wrapper for sportsdata.io PGA tour API: https://sportsdata.io/developers/api-documentation/golf#"""
 
     def __init__(self):
         self.auth = {'Ocp-Apim-Subscription-Key': 'abd80dc64b0e4ba4b274c80fe2ecc495'}
@@ -11,13 +11,13 @@ class SportsDataPGA:
 
     def getPlayers(self):
 
-        '''Get request for "Players" endpoint
+        """Get request for "Players" endpoint
 
             :Input - None
 
             :Returns -
                 - players_df (DataFrame) - Contains most recent base player information
-        '''
+        """
 
         players = requests.get("https://fly.sportsdata.io/golf/v2/json/Players"
                                             , headers=self.headers)
@@ -31,13 +31,13 @@ class SportsDataPGA:
 
     def getTournaments(self):
 
-        '''Get request for "Tournaments" endpoint
+        """Get request for "Tournaments" endpoint
 
             :Input - None
 
             :Returns -
                 - tournaments_df (DataFrame) - Contains most recent tournament scheduling information
-        '''
+        """
 
         tournaments = requests.get("https://fly.sportsdata.io/golf/v2/json/Tournaments"
                                             , headers=self.headers)

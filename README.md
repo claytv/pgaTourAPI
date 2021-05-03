@@ -44,7 +44,7 @@ Lambda + API Gateway is an easy decision for hosting an API because of how seaml
 - Biggest struggle was getting Pandas to work properly on Lambda, first tried building my own zip file and uploading it but there was some dependency issues. I then tried pulling the dependencies using docker, but this didnt work either. I think these didnt work because I am on Mac but Lambda runs on Linux. I was finally able to get it working by using Lambda Layers and the ARN code of some pre configured layers that I found on GitHub.
 
 ## Improvements
-- More endpoints and dynamic endpoints available
+- Make more endpoints, specifically dynamic endpoints available to the wrapper
 - Store in Redshift or RDS rather than S3. The issue with S3 is that you have to load entire dataset into Lambda function which causes performance issues. Another alternative would be to partition the data in S3 by state, however, if more parameters are available in the API this becomes less effective.  
 - Make more analytics available through API hosted by Lambda + API Gateway
 

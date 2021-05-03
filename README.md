@@ -10,7 +10,7 @@ Quickly develop a simple demo that show the flow of HTTP requests by building an
 - ```PGA_lambda_handler.py``` - script used for AWS Lambda function that is called by GET request
 - ```useEndpoint.py``` - simple example of using a GET request to use the deployed API
 
-```writeS3.py``` should be executed first to actualize the data in S3. Then it is required to setup a Lambda function using ```PGA_lambda_handler.py```. Then create a REST API in API Gateway, along with corresponding resource and GET method. Lastly, assign the previously created Lambda function to the GET method. The following endpoint is now available: 
+```writeS3.py``` should be executed first to actualize the data in S3. Then it is required to setup a Lambda function using ```PGA_lambda_handler.py```. Then create a REST API in API Gateway, along with corresponding resource and GET method. Lastly, assign the previously created Lambda function to the GET method. The following endpoint is now available:  
 
 ```https://fr2srhyume.execute-api.us-west-2.amazonaws.com/demo/pga-geography```
 
@@ -24,7 +24,7 @@ The only parameter available for this is 'state', and the response has the follo
 - ```timestamp``` - timestamp of the request
 
 ## PGA Tour API Wrapper
-sportsdata.io offers a limited free trial for PGA tour data. The wrapper built for this project does not support passing parameters for GET requests for two reasons, trying to keep this example simple and focused on the data flow of HTTP requests. Secondly, most of the dynamic endpoints were not supported by the free trial of this API. The following methods are available with the wrapper\
+sportsdata.io offers a limited free trial for PGA tour data. The wrapper built for this project does not support passing parameters for GET requests for two reasons, trying to keep this example simple and focused on the data flow of HTTP requests. Secondly, most of the dynamic endpoints were not supported by the free trial of this API. The following methods are available with the wrapper:  
      ```getPlayers()``` - returns a pandas dataframe of basic information about each historical PGA Tour golfer
      ```getTournaments()``` - returns a pandas dataframe of basic information about each historical PGA Tour tournament
 

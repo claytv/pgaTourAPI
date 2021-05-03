@@ -1,5 +1,5 @@
-# pgaTourAPI
-Simple wrapper for sportsdata.io pga tour API and hosting of a newly developed API using AWS Lambda & API Gateway
+# PGATourAPI
+Simple wrapper for sportsdata.io PGA Tour API and hosting of a newly developed API using AWS Lambda & API Gateway
 
 ### Goal of the project
 Quickly develop a simple demo that shows the flow of HTTP requests by building an API Wrapper, injesting the information provided by the API, store it and make some basic aggregations of it available via a seperate API in a different format. 

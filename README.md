@@ -25,7 +25,8 @@ The only parameter available for this is 'state', and the response has the follo
 
 ## PGA Tour API Wrapper
 sportsdata.io offers a limited free trial for PGA tour data. The wrapper built for this project does not support passing parameters for GET requests for two reasons, trying to keep this example simple and focused on the data flow of HTTP requests. Secondly, most of the dynamic endpoints were not supported by the free trial of this API. The following methods are available with the wrapper:  
-     ```getPlayers()``` - returns a pandas dataframe of basic information about each historical PGA Tour golfer
+
+     ```getPlayers()``` - returns a pandas dataframe of basic information about each historical PGA Tour golfer  
      ```getTournaments()``` - returns a pandas dataframe of basic information about each historical PGA Tour tournament
 
 ## Write to S3

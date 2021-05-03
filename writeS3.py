@@ -6,7 +6,7 @@ from credentials import AWS_SECRET, AWS_ACCESS_KEY
 
 
 def writeS3(df, filename, s3_client, bucket):
-    '''Writes a pandas dataframe to a given s3 bucket
+    """Writes a pandas dataframe to a given s3 bucket
         :Input
             - df (DataFrame) object to write to s3
             - filename (string) name of file to be written to S3
@@ -14,7 +14,7 @@ def writeS3(df, filename, s3_client, bucket):
             - bucket (string) name of S3 bucket to write into
 
         :Returns - None
-    '''
+    """
 
     buffer = io.StringIO()
     df.to_csv(buffer, index=False)
